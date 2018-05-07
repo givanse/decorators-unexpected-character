@@ -1,6 +1,6 @@
 https://github.com/ember-decorators/ember-decorators/issues/223
 
-env:
+### env:
 ```
 ember -v
 ember-cli: 3.1.4
@@ -9,16 +9,14 @@ os: linux x64
 ```
 (do not expect this to matter, but the OS is Linux subsystem in Win 10)
 
-steps:
+### steps:
 ```
-ember new 
-```
-decorators-unexpected-character
+ember new decorators-unexpected-character
 ember install ember-decorators
 ember g component c-foobar
 ```
 
-error:
+### error:
 
 ```
 ember build
@@ -28,3 +26,5 @@ decorators-unexpected-character/app/components/c-foobar.js
 
 ✖ 1 problem (1 error, 0 warnings)
 ```
+
+#### [app/components/c-foobar.js](app/components/c-foobar.js)
