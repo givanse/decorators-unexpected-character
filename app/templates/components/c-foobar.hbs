@@ -1,1 +1,12 @@
-{{yield}}
+<div {{action highlight}}>
+  i am c-foobar
+  <br>
+  {{t.one}}
+  <br>
+  {{type}}
+
+  {{#if showRaw}}
+    <br>
+    {{json}}
+  {{/if}}
+</div>

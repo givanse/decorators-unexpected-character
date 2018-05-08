@@ -2,23 +2,32 @@ import Component from '@ember/component';
 import {
   action,
   computed,
-  alias,
 } from '@ember-decorators/object';
+import {
+  alias,
+} from '@ember-decorators/object/computed';
+import {
+  classNames,
+  className,
+} from '@ember-decorators/component';
 
 @classNames('class-one', 'class-two')
 class CFoobar extends Component {
 
-  @className 'type';
+  @className type;
 
-  constructor() {
-    this.showRaw = false;
-  }
+  showRaw = true;
 
   @alias('transaction') t;
 
+  @computed('transaction.type')
+  get type() {
+    return this.transaction.type;
+  }
+
   @computed('transaction.raw')
-  json(raw) {
-    const json = JSON.stringify(raw).replace(/,/g, ', ');
+  get json() {
+    const json = JSON.stringify(this.transaction.raw).replace(/,/g, ', ');
     return json;
   }
 
@@ -27,12 +36,12 @@ class CFoobar extends Component {
     this.toggleProperty('showRaw');
   }
 
-};
+}
 
-OrderSummary.reopenClass({
+CFoobar.reopenClass({
 
   positionalParams: ['transaction'],
 
 });
 
-export default OrderSummary;
+export default CFoobar;
